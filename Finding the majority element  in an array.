@@ -1,0 +1,22 @@
+-----> Unordered map approach which takes space complexity as O(n),time O(n);
+class Solution {
+public:
+    vector<int> majorityElement(vector<int>& nums) {
+
+        vector<int> ans;
+        unordered_map<int,int> mp;
+        int cond = nums.size() / 3;
+
+        for(auto i: nums){
+            mp[i]++;
+        }
+
+        for(auto &i : nums){
+            if(mp[i] > cond){
+                ans.push_back(i);
+                mp[i] = 0;
+            }
+        }
+        return ans;
+    }
+};
